@@ -1,0 +1,4 @@
+Vasya;Petrovish;Petin;88005553535;street N;ml_sotrudnik;vasyaPP@gmail.ru
+Ирина;Всеволодовна;Абанкина;84957729590;-;Директор;abankinai@hse.ru
+Татьяна;Всеволодовна;Абанкина;84957729590;-;Директор_центра;abankinat@hse.ru
+Ксения;Руслановна;Абанокова;84956246240;-;Мл_научн_сотруд;kabanokova@hse.ru
