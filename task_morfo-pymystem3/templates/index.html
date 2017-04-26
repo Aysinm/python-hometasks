@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Ищем глаголы в тексте</h1>
+        <form>
+            <div class="form-group">
+                <textarea type="text" rows=10 class="form-control" name="text" placeholder="Ваш текст" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Искать глаголы</button>
+        </form>
+        <p></p>
+        {% if result %}
+            <h1>Результат</h1>
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    Исходный текст
+                </div>
+                <div class="panel-body">
+                    {{text}}
+                </div>
+                <div class="panel-heading">
+                    Всего глаголов
+                </div>
+                <div class="panel-body">
+                    {{result.g_count}}
+                </div>
+                <div class="panel-heading">
+                    Процент глаголов глаголов
+                </div>
+                <div class="panel-body">
+                    {{result.g_p}}
+                </div>
+                <div class="panel-heading">
+                    Переходных глаголов
+                </div>
+                <div class="panel-body">
+                    {{result.g_perehod}}
+                </div>
+                <div class="panel-heading">
+                    Непереходных глаголов
+                </div>
+                <div class="panel-body">
+                    {{result.g_neperehod}}
+                </div>
+                <div class="panel-heading">
+                    Глаголов совершенного вида
+                </div>
+                <div class="panel-body">
+                    {{result.g_sov}}
+                </div>
+                <div class="panel-heading">
+                    Глаголов несовершенного вида
+                </div>
+                <div class="panel-body">
+                    {{result.g_nesov}}
+                </div>
+                <div class="panel-heading">
+                    Частотный анализ лемм
+                </div>
+                <div class="panel-body">
+                    {% for i in result.g_ches %}
+                        {{i}}<br>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
+    </div>
+
+</body>
+</html>
