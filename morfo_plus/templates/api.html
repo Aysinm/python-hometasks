@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block title %}
+    Vk Api
+{% endblock %}
+{% block content %}
+    <h1>Vk Api. Поиск общих подписчиков</h1>
+    <form>
+        <div class="form-group">
+            <input type="text" class="form-control" name="g1_id" placeholder="идентификатор или короткое имя сообщества: например hackworldwtf - Хакеры" required>
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" name="g2_id" placeholder="идентификатор или короткое имя сообщества: например xakep_mag - Журнал Хакер" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Искать общих подписчиков</button>
+    </form>
+    <p></p>
+        {% if result %}
+            <table class="table">
+                <tr>
+                    <th>Аватарка</th>
+                    <th>Название</th>
+                    <th>Закрыта</th>
+                    <th>Количество подписчиков</th>
+                </tr>
+                {% if not g1.errors %}
+                    <tr>
+                        <td><img src="{{g1.photo}}"></td>
+                        <td>{{g1.name}}</td>
+                        <td>{{g1.is_closed}}</td>
+                        <td>{{g1.count}}</td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td>Возникла</td>
+                        <td>Ошибка</td>
+                        <td>Неверный</td>
+                        <td>ID группы</td>
+                    </tr>
+                {% endif %}
+                {% if not g2.errors %}
+                    <tr>
+                        <td><img src="{{g2.photo}}"></td>
+                        <td>{{g2.name}}</td>
+                        <td>{{g2.is_closed}}</td>
+                        <td>{{g2.count}}</td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td>Возникла</td>
+                        <td>Ошибка</td>
+                        <td>Неверный</td>
+                        <td>ID группы</td>
+                    </tr>
+                {% endif %}
+            </table>
+            <p></p>
+            {% if not g1.errors and not g2.errors %}
+                Общее количество подписчиков: {{both_users}}
+            {% endif %}
+            <p></p>
+        {% endif %}
+{% endblock %}

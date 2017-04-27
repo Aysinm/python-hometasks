@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% block title %}
+    Ищем глаголы
+{% endblock %}
+{% block content %}
+    <h1>Ищем глаголы в тексте</h1>
+    <form>
+        <div class="form-group">
+            <textarea type="text" rows=10 class="form-control" name="text" placeholder="Ваш текст" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Искать глаголы</button>
+    </form>
+    <p></p>
+    {% if result %}
+        <h1>Результат</h1>
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                Исходный текст
+            </div>
+            <div class="panel-body">
+                {{text}}
+            </div>
+            <div class="panel-heading">
+                Всего глаголов
+            </div>
+            <div class="panel-body">
+                {{result.g_count}}
+            </div>
+            <div class="panel-heading">
+                Процент глаголов глаголов
+            </div>
+            <div class="panel-body">
+                {{result.g_p}}
+            </div>
+            <div class="panel-heading">
+                Переходных глаголов
+            </div>
+            <div class="panel-body">
+                {{result.g_perehod}}
+            </div>
+            <div class="panel-heading">
+                Непереходных глаголов
+            </div>
+            <div class="panel-body">
+                {{result.g_neperehod}}
+            </div>
+            <div class="panel-heading">
+                Глаголов совершенного вида
+            </div>
+            <div class="panel-body">
+                {{result.g_sov}}
+            </div>
+            <div class="panel-heading">
+                Глаголов несовершенного вида
+            </div>
+            <div class="panel-body">
+                {{result.g_nesov}}
+            </div>
+            <div class="panel-heading">
+                Частотный анализ лемм
+            </div>
+            <div class="panel-body">
+                {% for i in result.g_ches %}
+                    {{i}}<br>
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}
